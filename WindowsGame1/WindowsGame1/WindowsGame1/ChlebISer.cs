@@ -33,6 +33,7 @@ namespace WindowsGame1
 
         float displayWidth;
         float displayHeight;
+        float saveSpeed;
         GameSpriteStruck chleb, pomidor, papryka, ser;
         
         public ChlebISer()
@@ -122,9 +123,6 @@ namespace WindowsGame1
 
             // TODO: Add your update logic here
 
-            //pozycjonowanie chleba
-           // chleb.SpriteRectangle.X = (int)();
-
             //poruszanie serem
             ser.X = ser.X + ser.XSpeed;
             ser.Y = ser.Y + ser.YSpeed;
@@ -161,6 +159,48 @@ namespace WindowsGame1
             {
                 chleb.X = chleb.X - chleb.XSpeed;           
                 chleb.SpriteRectangle.X = (int)chleb.X;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+                chleb.Y = chleb.Y - chleb.XSpeed;
+                chleb.SpriteRectangle.Y = (int)chleb.Y;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                chleb.Y = chleb.Y + chleb.YSpeed;
+                chleb.SpriteRectangle.Y = (int)chleb.Y;
+            }
+
+            //zatrzymanie chleba w ekranie
+            if(chleb.X > displayWidth - chleb.SpriteRectangle.Width)
+            {
+                chleb.X = chleb.X - chleb.XSpeed;
+            }
+            if (chleb.X < 0)
+            {
+                chleb.X = chleb.X + chleb.XSpeed;
+            }
+            if (chleb.Y > displayHeight - chleb.SpriteRectangle.Height)
+            {
+                chleb.Y = chleb.Y - chleb.YSpeed;
+            }
+            if (chleb.Y < 0)
+            {
+                chleb.Y = chleb.Y + chleb.YSpeed;
+            }
+
+
+            //kolizja!!!!!!
+            if (ser.SpriteRectangle.Intersects(chleb.SpriteRectangle))
+            {
+                ser.YSpeed = ser.YSpeed * -1;
+            }
+
+            if (ser.SpriteRectangle.Intersects(chleb.SpriteRectangle))
+            {
+                ser.YSpeed = ser.YSpeed * -1;
             }
 
 
