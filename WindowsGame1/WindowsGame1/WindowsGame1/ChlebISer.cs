@@ -85,6 +85,8 @@ namespace WindowsGame1
             sprite.SpriteRectangle.Width = (int)((displayWidth * widthFactor) + 0.5f);
             float aspectRaito = (float)sprite.SpriteTexture.Width / sprite.SpriteTexture.Height;
             sprite.SpriteRectangle.Height = (int)((sprite.SpriteRectangle.Width / aspectRaito) + 0.5f);
+            sprite.SpriteRectangle.X = (int)initialX;
+            sprite.SpriteRectangle.Y = (int)initialY;
             sprite.X = initialX;
             sprite.Y = initialY;
             sprite.XSpeed = displayWidth / ticksToCrossScreen;
@@ -94,7 +96,7 @@ namespace WindowsGame1
 
         void setupSprites()
         {
-            setupSprite(ref chleb, 0.15f, 120.0f, displayWidth / 2, displayHeight / 2);
+            setupSprite(ref chleb, 0.15f, 120.0f, displayWidth / 2, displayHeight - 100);
             setupSprite(ref ser, 0.05f, 200.0f, 0, 0);
         }
 
@@ -120,12 +122,17 @@ namespace WindowsGame1
 
             // TODO: Add your update logic here
 
-            //poruszanie sera
+            //pozycjonowanie chleba
+           // chleb.SpriteRectangle.X = (int)();
+
+            //poruszanie serem
             ser.X = ser.X + ser.XSpeed;
             ser.Y = ser.Y + ser.YSpeed;
             ser.SpriteRectangle.X = (int)(ser.X + 0.5f);
             ser.SpriteRectangle.Y = (int)(ser.Y + 0.5f);
-            if (ser.X + ser.SpriteRectangle.Width >= displayWidth)
+            
+            //ograniczenie sera wewn¹trz pola widzenia
+            if (ser.X + ser.SpriteRectangle.Width <= displayWidth)
             {
                 ser.XSpeed = ser.XSpeed * -1;
             }
@@ -134,21 +141,31 @@ namespace WindowsGame1
                 ser.XSpeed = ser.XSpeed * -1;
             }
 
+            if (ser.Y + ser.SpriteRectangle.Height <= displayHeight)
+            {
+                ser.YSpeed = ser.YSpeed * -1;
+            }
+            if (ser.Y >= 0)
+            {
+                ser.YSpeed = ser.YSpeed * -1;
+            }
+
             //poruszanie siê chleba
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
-            chleb.X = chleb.X + chleb.XSpeed;
-            chleb.SpriteRectangle.X = (int)chleb.X;
+                chleb.X = chleb.X + chleb.XSpeed;
+                chleb.SpriteRectangle.X = (int)chleb.X;
             }
+
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
-            chleb.X = chleb.X - chleb.XSpeed;           
-            chleb.SpriteRectangle.X = (int)chleb.X;
-
+                chleb.X = chleb.X - chleb.XSpeed;           
+                chleb.SpriteRectangle.X = (int)chleb.X;
             }
 
+
             base.Update(gameTime);
-        }
+          }
 
         /// <summary>
         /// This is called when the game should draw itself.
