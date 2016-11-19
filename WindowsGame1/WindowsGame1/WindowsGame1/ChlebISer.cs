@@ -98,7 +98,7 @@ namespace WindowsGame1
         void setupSprites()
         {
             setupSprite(ref chleb, 0.15f, 120.0f, displayWidth / 2, displayHeight - 100);
-            setupSprite(ref ser, 0.05f, 200.0f, 0, 200);
+            setupSprite(ref ser, 0.05f, 200.0f, 0, 0);
         }
 
         public void reset()
@@ -169,7 +169,8 @@ namespace WindowsGame1
                 chleb.SpriteRectangle.X = (int)chleb.X;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            //Dodatkowe poruszanie chlebem
+           /* if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 chleb.Y = chleb.Y - chleb.XSpeed;
                 chleb.SpriteRectangle.Y = (int)chleb.Y;
@@ -179,7 +180,7 @@ namespace WindowsGame1
             {
                 chleb.Y = chleb.Y + chleb.YSpeed;
                 chleb.SpriteRectangle.Y = (int)chleb.Y;
-            }
+            }*/
 
             //zatrzymanie chleba w ekranie
             if(chleb.X > displayWidth - chleb.SpriteRectangle.Width)
@@ -190,27 +191,19 @@ namespace WindowsGame1
             {
                 chleb.X = chleb.X + chleb.XSpeed;
             }
-            if (chleb.Y > displayHeight - chleb.SpriteRectangle.Height)
+            
+            //Je¿eli w³¹czysz poruszanie góra i dó³
+            /*if (chleb.Y > displayHeight - chleb.SpriteRectangle.Height)
             {
                 chleb.Y = chleb.Y - chleb.YSpeed;
             }
             if (chleb.Y < 0)
             {
                 chleb.Y = chleb.Y + chleb.YSpeed;
-            }
+            }*/
 
 
-            //kolizja!!!!!!
-
-            if (ser.X > chleb.X + chleb.SpriteRectangle.Width || ser.X + ser.SpriteRectangle.Width < chleb.X ||
-                ser.Y > chleb.Y + chleb.SpriteRectangle.Height || ser.Y + ser.SpriteRectangle.Height < chleb.Y)
-            {
-                //false
-            }
-            else
-            {
-                //true
-            }
+            //kolizja
 
             //prawa krawêdŸ chleba
             if (ser.X + ser.SpriteRectangle.Width > chleb.X && 
@@ -241,9 +234,9 @@ namespace WindowsGame1
 
             //dolna krawêdŸ chleba
             if (ser.Y < chleb.Y + chleb.SpriteRectangle.Height && 
-                ser.Y + ser.SpriteRectangle.Height < chleb.Y && 
-                ser.X + ser.SpriteRectangle.Width < chleb.X && 
-                ser.X > chleb.X + chleb.SpriteRectangle.Width)
+                ser.Y + ser.SpriteRectangle.Height > chleb.Y + chleb.SpriteRectangle.Height && 
+                ser.X + ser.SpriteRectangle.Width > chleb.X && 
+                ser.X < chleb.X + chleb.SpriteRectangle.Width)
             {
                 ser.YSpeed = ser.YSpeed * -1;
             }
