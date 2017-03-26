@@ -31,10 +31,17 @@ namespace WindowsGame1
             public float TicksToCrossScreen;
         }
 
+        
+        
+            Texture2D tomatoTexture;
+            GameSpriteStruck[] tomatoes;
+            int numberoftomatoes = 30;
+        
+
         float displayWidth;
         float displayHeight;
-        float saveSpeed;
-        GameSpriteStruck chleb, pomidor, papryka, ser;
+//        float saveSpeed;
+        GameSpriteStruck chleb, ser;
         
         public ChlebISer()
         {
@@ -69,9 +76,10 @@ namespace WindowsGame1
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+
             chleb.SpriteTexture = Content.Load<Texture2D>("Images/chlebe³");
-            papryka.SpriteTexture = Content.Load<Texture2D>("Images/papryke³a");
-            pomidor.SpriteTexture = Content.Load<Texture2D>("Images/pomidore³");
+//            papryka.SpriteTexture = Content.Load<Texture2D>("Images/papryke³a");
+            tomatoTexture = Content.Load<Texture2D>("Images/pomidore³");
             ser.SpriteTexture = Content.Load<Texture2D>("Images/sere³");
 
             //wykonywanie metody podaj¹cej wartoœci pocz¹tkowe
@@ -92,13 +100,34 @@ namespace WindowsGame1
             sprite.Y = initialY;
             sprite.XSpeed = displayWidth / ticksToCrossScreen;
             sprite.YSpeed = sprite.XSpeed;
-
         }
 
         void setupSprites()
         {
             setupSprite(ref chleb, 0.15f, 120.0f, displayWidth / 2, displayHeight - 100);
             setupSprite(ref ser, 0.05f, 200.0f, 0, 0);
+            tomatoes = new GameSpriteStruck[numberoftomatoes];
+
+            int tomatoesinrow = numberoftomatoes / 3;
+            float tomatoSpacing = displayWidth / tomatoesinrow;  //(0 - 0) / numberoftomatoes;
+
+            for (int i = 0; i < numberoftomatoes; i++)
+            {
+                tomatoes[i].SpriteTexture = tomatoTexture;
+
+                if (i < tomatoesinrow)
+                {
+                    setupSprite(ref tomatoes[i], 0.05f, 0, 5 + (i * tomatoSpacing), 0);
+                }
+                else if (i > tomatoesinrow && i <= tomatoesinrow * 2)
+                {
+                    setupSprite(ref tomatoes[i], 0.05f, 0, 0 + (i * tomatoSpacing), 40);
+                }
+                else 
+                {
+                    setupSprite(ref tomatoes[i], 0.05f, 0, 0 + (i * tomatoSpacing), 80);
+                }
+            }
         }
 
         public void reset()
@@ -137,11 +166,18 @@ namespace WindowsGame1
             ser.SpriteRectangle.X = (int)(ser.X + 0.5f);
             ser.SpriteRectangle.Y = (int)(ser.Y + 0.5f);
             
-            //ograniczenie sera wewn¹trz pola widzenia
-            if (ser.X + ser.SpriteRectangle.Width <= displayWidth)
+            //wspó³rzêdne pomidorów
+            for (int i = 0; i < numberoftomatoes; i++)
             {
-                ser.XSpeed = ser.XSpeed * -1;
+                tomatoes[i].SpriteRectangle.X = (int)tomatoes[i].X;
+                tomatoes[i].SpriteRectangle.Y = (int)tomatoes[i].Y;
             }
+
+                //ograniczenie sera wewn¹trz pola widzenia
+                if (ser.X + ser.SpriteRectangle.Width <= displayWidth)
+                {
+                    ser.XSpeed = ser.XSpeed * -1;
+                }
             if (ser.X >= 0)
             {
                 ser.XSpeed = ser.XSpeed * -1;
@@ -170,7 +206,7 @@ namespace WindowsGame1
             }
 
             //Dodatkowe poruszanie chlebem
-           /* if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            /*if (Keyboard.GetState().IsKeyDown(Keys.Up))
             {
                 chleb.Y = chleb.Y - chleb.XSpeed;
                 chleb.SpriteRectangle.Y = (int)chleb.Y;
@@ -193,14 +229,14 @@ namespace WindowsGame1
             }
             
             //Je¿eli w³¹czysz poruszanie góra i dó³
-            /*if (chleb.Y > displayHeight - chleb.SpriteRectangle.Height)
+            if (chleb.Y > displayHeight - chleb.SpriteRectangle.Height)
             {
                 chleb.Y = chleb.Y - chleb.YSpeed;
             }
             if (chleb.Y < 0)
             {
                 chleb.Y = chleb.Y + chleb.YSpeed;
-            }*/
+            }
 
 
             //kolizja
@@ -264,8 +300,12 @@ namespace WindowsGame1
 
             spriteBatch.Draw(chleb.SpriteTexture, chleb.SpriteRectangle, Color.White);
             spriteBatch.Draw(ser.SpriteTexture, ser.SpriteRectangle, Color.White);
-            spriteBatch.End();
+            for (int i = 0; i < numberoftomatoes; i++) {
+                spriteBatch.Draw(tomatoes[i].SpriteTexture,
+                tomatoes[i].SpriteRectangle, Color.White);
+            }
 
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
