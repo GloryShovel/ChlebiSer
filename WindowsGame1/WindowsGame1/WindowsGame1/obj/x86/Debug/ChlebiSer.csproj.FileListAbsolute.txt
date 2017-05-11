@@ -8,3 +8,4 @@ C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\W
 C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.exe
 C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.pdb
+C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\font\SpriteFont1.xnb
