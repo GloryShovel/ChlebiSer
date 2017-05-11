@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Images\chlebeł.xnb</Output>
-      <Time>2016-07-21T13:44:57.041118+02:00</Time>
+      <Time>2017-05-07T15:32:33.2510226+02:00</Time>
     </Item>
     <Item>
       <Source>Images\paprykeła.jpg</Source>
@@ -37,6 +37,15 @@
       <Output>C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Images\sereł.xnb</Output>
       <Time>2016-07-21T13:44:57.0571332+02:00</Time>
     </Item>
+    <Item>
+      <Source>font\SpriteFont1.spritefont</Source>
+      <Name>font\SpriteFont1</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\font\SpriteFont1.xnb</Output>
+      <Time>2017-04-21T21:53:12.0041293+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{72666381-F7EF-4CFF-B2CD-8429AC3DBCED}</ContentProjectGUID>
@@ -44,10 +53,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Kamil\Documents\Visual Studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Kamil\documents\visual studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Kamil\documents\visual studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Kamil\documents\visual studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Kamil\documents\visual studio 2013\Projects\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
